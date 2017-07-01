@@ -5,10 +5,16 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 	var inputFabricante = document.getElementById('fabricanteText');
 	var inputModelo = document.getElementById('modeloText');
 	var inputAno = document.getElementById('anoText');
-	document.getElementById('addBtn').setAttribute("disabled","disabled");
+	document.getElementById('editBtn').setAttribute("disabled","disabled");
+	document.getElementById('editCancelBtn').setAttribute("disabled","disabled");
 
 	var refresh = function(){
 		$http.get("/carroslist").then(function (success){
+			if(success.data.length == 0){
+				document.getElementById('relatorioBtn').setAttribute("disabled","disabled");
+			}else{
+				document.getElementById('relatorioBtn').removeAttribute("disabled");
+			}
 			$scope.carroslist = success.data;
 			$scope.carro = {};
 		},function (error){
@@ -46,7 +52,9 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 		},function (error){
 
 		});
-		document.getElementById('addBtn').removeAttribute("disabled");
+		document.getElementById('addBtn').setAttribute("disabled","disabled");
+		document.getElementById('editBtn').removeAttribute("disabled");
+		document.getElementById('editCancelBtn').removeAttribute("disabled");
 	}
 
 	$scope.updateCarro = function(){
@@ -57,8 +65,18 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 
 			});
 			alertify.success('Editado!');
-			document.getElementById('addBtn').setAttribute("disabled","disabled");
+			document.getElementById('editBtn').setAttribute("disabled","disabled");
+			document.getElementById('editCancelBtn').setAttribute("disabled","disabled");
+			document.getElementById('addBtn').removeAttribute("disabled");
 		}
+	}
+	
+	$scope.cancelUpdateCarro = function(){
+		refresh();
+		alertify.error('Edicao cancelada!');
+		document.getElementById('editBtn').setAttribute("disabled","disabled");
+		document.getElementById('editCancelBtn').setAttribute("disabled","disabled");
+		document.getElementById('addBtn').removeAttribute("disabled");
 	}
 
 	$scope.gerarRelatorio = function(){

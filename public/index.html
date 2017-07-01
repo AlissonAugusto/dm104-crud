@@ -34,8 +34,10 @@
 						<td><input class = "form-control" ng-model="carro.fabricante" id="fabricanteText"></td>
 						<td><input class = "form-control" ng-model="carro.modelo" id="modeloText"></td>
 						<td><input class = "form-control" ng-model="carro.ano" id="anoText"></td>
-						<td><button class = "btn btn-primary" ng-click="addCarro()">Adicionar</button></td>
-						<td><button class="btn btn-info" ng-click="updateCarro()" id="addBtn">Editar</button>&nbsp;&nbsp;<button class="btn btn-default" ng-click="clear()">Limpar</button></td>
+						<td><button class = "btn btn-primary" ng-click="addCarro()" id="addBtn">Adicionar</button></td>
+						<td><button class="btn btn-default" ng-click="clear()">Limpar</button></td>
+						<td><button class="btn btn-info" ng-click="updateCarro()" id="editBtn">Confirmar Edicao</button></td>
+						<td><button class="btn btn-danger" ng-click="cancelUpdateCarro()" id="editCancelBtn">Cancelar Edicao</button></td>
 					</tr>	
 					<tr ng-repeat="carro in carroslist">
 						<td>{{carro.carro}}</td>
@@ -46,7 +48,7 @@
 						<td><button class="btn btn-warning" ng-click="editCarro(carro._id)">Editar</button></td>
 					</tr>
 				</table>
-				<td><button class = "btn btn-success" ng-click="gerarRelatorio()">Gerar Relatorio</button></td>
+				<td><button class = "btn btn-success" ng-click="gerarRelatorio()" id="relatorioBtn">Gerar Relatorio</button></td>
 			</div>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
