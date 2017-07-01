@@ -30,7 +30,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 	}
 
 	$scope.removeCarro = function(id){
-		alertify.confirm('Confirmar remoção', 'Tem certeza que deseja remover?', function(){ 
+		alertify.confirm('Confirmar', 'Tem certeza que deseja remover?', function(){ 
 			$http.delete('/carroslist/'+id).then(function (success){
 				alertify.success('Removido!');
 				refresh();
