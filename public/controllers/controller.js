@@ -110,6 +110,11 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 			inputAno.focus();
 			alertify.alert('Falha ao cadastrar! O campo Ano deve ser preenchido!').set('title','Falha');
 			return false;
+		}else if(isNaN(inputAno.value)){
+			inputAno.value = '';;
+			inputAno.focus();
+			alertify.alert('Falha ao cadastrar! O campo Ano deve ser um numero!').set('title','Falha');
+			return false;
 		}else{
 			return true;
 		}
