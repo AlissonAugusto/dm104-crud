@@ -1,0 +1,15 @@
+{
+  "name": "crudcarros",
+  "version": "1.0.0",
+  "description": "Aplicativo MEAN para a disciplina DM104",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongojs": "^2.4.0"
+  }
+}
